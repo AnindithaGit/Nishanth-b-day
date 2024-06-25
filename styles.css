@@ -1,0 +1,130 @@
+body {
+  font-family: 'Roboto Mono', cursive;
+  text-shadow: 0 0.05rem 0.1rem rgba(0, 0, 0, 0.5);
+  background-color: rgb(7, 5, 5);
+  color: #fff;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+h1 {
+  margin-bottom: 20px;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+  text-align: center;
+  justify-content: center; 
+  align-items: center;
+  z-index: 2;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgb(255, 255, 255);
+  transition: .4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: #000000;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: rgb(255, 255, 255);
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+#mode-text {
+  margin-left: 10px;
+  z-index: 2;
+}
+
+/* Night Mode Styles */
+body.night-mode {
+  background-color: #f0f0f0;
+  color: rgb(3, 1, 1);
+}
+
+#image-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+}
+
+#day-image,
+#night-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: none;
+}
+
+body.night-mode #night-image {
+  display: block;
+}
+
+body:not(.night-mode) #day-image {
+  display: block;
+}
+
+#day-text {
+  position: absolute;
+  bottom: 175px; /* Adjust as needed */
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Press Start 2P', cursive;
+  font-size: 1.5rem;
+  color: rgb(0, 0, 0);
+  opacity: 0;
+  transition: opacity 5s ease-in;
+  z-index: 2;
+}
+
+body.night-mode #day-text {
+  opacity: 1;
+}
